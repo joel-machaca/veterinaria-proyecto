@@ -1,0 +1,153 @@
+<main class="bg-gray-50 py-16 sm:py-24">
+    <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-10 bg-white p-8 rounded-xl shadow-lg">
+            <span class="text-cyan-500 font-semibold uppercase tracking-widest">Gestión Interna</span>
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-900 mt-2 mb-2">
+                Agendar Cita (Admin)
+            </h1>
+            <p class="text-lg text-gray-600">
+                Busca al dueño y a la mascota para programar una nueva atención.
+            </p>
+        </div>
+
+        <div class="bg-white p-8 sm:p-12 rounded-xl shadow-2xl">
+            <form class="space-y-8" [formGroup]="citaForm" (submit)="handleSubmit()">
+                <div class="space-y-4 border-b border-gray-200 pb-6">
+                    <h2 class="text-2xl font-bold text-blue-900 flex items-center">
+                        <span class="text-cyan-500 mr-3 text-3xl font-extrabold">1.</span>
+                        Buscar Dueño
+                    </h2>
+                    
+                    <div>
+                        <label for="search-dueno" class="block text-sm font-medium text-gray-700">DNI:</label>
+                        <div class="mt-1 flex space-x-2">
+                            <input type="text" name="search-dueno" id="search-dueno" 
+                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-lg p-3 placeholder-gray-300"
+                                placeholder="88888888"
+                                minlength="8"
+                                maxlength="8"
+                                formControlName="id"
+                                >
+                            <button type="button" class="px-4 py-2 bg-blue-900 text-white rounded-md shadow-md hover:bg-cyan-500 transition duration-200 whitespace-nowrap" (click)="buscarPorId()">
+                                Buscar
+                            </button>
+                        </div>
+                    </div>
+                    @if (BuscarUsado) {
+                        @if (duenoEncontrado) {
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                            <p class="font-semibold text-blue-900">Dueño Encontrado:</p>
+                            <p class="text-sm text-gray-700">
+                                <span class="font-bold">ID: {{duenoEncontrado.id}}</span> - {{duenoEncontrado.nombre}}-{{duenoEncontrado.apellido}} (<a href="tel:987654321" class="text-cyan-600 hover:underline">{{duenoEncontrado.telefono}}</a>)
+                            </p>
+                        </div>
+                    }@else {
+                        <div class="bg-red-200 p-4 rounded-lg border border-red-600">
+                            <p class="font-semibold text-red-900">Dueño no encontrado:</p>
+                            <p class="text-sm text-red-700">por favor digitar bien el dni o registrar dueño</p>
+                        </div>
+                    }
+                    }
+                </div>
+
+                <div class="space-y-4 border-b border-gray-200 pb-6">
+                    <h2 class="text-2xl font-bold text-blue-900 flex items-center">
+                        <span class="text-cyan-500 mr-3 text-3xl font-extrabold">2.</span>
+                        Seleccionar Mascota
+                    </h2>
+                    
+                    <div>
+                        <label for="mascotaId" class="block text-sm font-medium text-gray-700">Mascotas de: {{duenoEncontrado?.nombre}}</label>
+                        <select id="mascotaId" name="mascotaId" required
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-lg p-3 bg-white"
+                            formControlName="mascotaNombre">
+                            
+                            <option value="" disabled selected>Elige una mascota para la cita...</option>
+                            @if(mascotasObtenidas){
+                                @for (item of mascotasObtenidas;track item.nombre) {
+                                    <option [value]="item.nombre">{{item.nombre}}</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="pt-2 space-y-4">
+                    <h2 class="text-2xl font-bold text-blue-900 flex items-center">
+                        <span class="text-cyan-500 mr-3 text-3xl font-extrabold">3.</span>
+                        Servicio y Horario
+                    </h2>
+                    
+                    <div>
+                        <label for="tipoServicio" class="block text-sm font-medium text-gray-700">Servicio Requerido</label>
+                        <select id="tipoServicio" name="tipoServicio" required
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-lg p-3 bg-white"
+                            formControlName="servicio">
+                            <option value="" disabled selected>Selecciona un servicio</option>
+                            @for (item of tipoServicio; track $index) {
+                                <option [value]="item">{{item}}</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        <div>
+                            <label for="fechaCita" class="block text-sm font-medium text-gray-700">Fecha de la Cita</label>
+                            <input type="date" name="fechaCita" id="fechaCita" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-lg p-3"
+                                formControlName="fecha">
+                        </div>
+                        <div>
+                            <label for="horaCita" class="block text-sm font-medium text-gray-700">Hora de la Cita</label>
+                            <select name="horaCita" id="horaCita" required formControlName="hora">
+                                <option value="" disabled >elegir hora</option>
+                                <option value="08:00">08:00 AM</option>
+                                <option value="08:30">08:30 AM</option>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="09:30">09:30 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="10:30">10:30 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="11:30">11:30 AM</option>
+                                <option value="" disabled>12:00 PM</option>
+                                <option value="" disabled>12:30 PM</option>
+                                <option value="" disabled>01:00 PM</option>
+                                <option value="13:30">01:30 PM</option>
+                                <option value="14:00">02:00 PM</option>
+                                <option value="14:30">02:30 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                                <option value="15:30">03:30 PM</option>
+                                <option value="16:00">04:00 PM</option>
+                                <option value="16:30">04:30 PM</option>
+                                <option value="17:00">05:00 PM</option>
+                                <option value="17:30">05:30 PM</option>
+                                <option value="18:00">06:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="motivoDetalle" class="block text-sm font-medium text-gray-700">Detalle del Motivo de Cita (Notas internas)</label>
+                        <textarea id="motivoDetalle" name="motivoDetalle" rows="2" required
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm p-3"
+                            placeholder="Ej: Cliente reporta tos seca, necesita certificado de viaje, etc."
+                            formControlName="detalle"></textarea>
+                    </div>
+
+                </div>ñ
+
+                <div class="pt-6">
+                    <button type="submit"
+                        class="group relative flex w-full justify-center rounded-full border border-transparent bg-cyan-500 py-3 px-4 text-lg font-bold text-white hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 transition duration-300 shadow-xl transform hover:scale-[1.01]">
+                        Agendar Cita en el Sistema
+                    </button>
+                    <p class="mt-3 text-center text-xs text-gray-500">
+                        La cita se registrará automáticamente en el calendario de la clínica.
+                    </p>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</main>

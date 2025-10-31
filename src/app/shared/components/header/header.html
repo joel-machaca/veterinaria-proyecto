@@ -1,0 +1,111 @@
+<header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+        
+        <div class="text-2xl font-bold h-20">
+            <a routerLink="/"><img src="logo.png" alt="logo" class="h-full w-auto object-contain"/></a>
+        </div>
+        
+        <nav class="hidden md:flex space-x-8">
+            <a routerLink="/" class="text-blue-900 hover:text-cyan-500 transition duration-300 font-medium">Inicio</a>
+            
+            <div class="relative group">
+                <a href="#"
+                    class="text-blue-900 hover:text-cyan-500 transition duration-300 font-medium flex items-center">
+                    Servicios
+                    <svg class="ml-1 h-5 w-5 transition duration-300 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                
+                <div class="absolute left-1/2 -translate-x-1/2 mt-0 top-full hidden group-hover:block w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none py-1">
+                    
+                    <a routerLink="/servicios"
+                        class="block px-4 py-2 text-sm text-blue-900 hover:bg-gray-100 hover:text-cyan-500 transition duration-300">
+                        Consulta General
+                    </a>
+                    
+                    <a routerLink="/servicios"
+                        class="block px-4 py-2 text-sm text-blue-900 hover:bg-gray-100 hover:text-cyan-500 transition duration-300">
+                        Vacunación
+                    </a>
+                    
+                    <a routerLink="/servicios"
+                        class="block px-4 py-2 text-sm text-blue-900 hover:bg-gray-100 hover:text-cyan-500 transition duration-300">
+                        Cirugía y Urgencias
+                    </a>
+                    <a routerLink="/servicios"
+                        class="block px-4 py-2 text-sm text-blue-900 hover:bg-gray-100 hover:text-cyan-500 transition duration-300">
+                        Control de salud
+                    </a>
+                    <a routerLink="/servicios"
+                        class="block px-4 py-2 text-sm text-blue-900 hover:bg-gray-100 hover:text-cyan-500 transition duration-300">
+                        Cirugía
+                    </a>
+                    
+                    <div class="border-t border-gray-100 my-1"></div>
+
+                    <a routerLink="/servicios"
+                        class="block px-4 py-2 text-sm text-cyan-500 font-semibold hover:bg-gray-100 transition duration-300">
+                        Ver Todos los Servicios
+                    </a>
+                </div>
+            </div>
+            
+            <div class="relative group">
+                <a href="#"
+                    class="text-blue-900 hover:text-cyan-500 transition duration-300 font-medium flex items-center">
+                    Citas
+                    <svg class="ml-1 h-5 w-5 transition duration-300 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                
+                <div class="absolute left-1/2 -translate-x-1/2 mt-0 top-full hidden group-hover:block w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none py-1">
+                    
+                    <a routerLink="/cita/list"
+                        class="block px-4 py-2 text-sm text-blue-900 font-semibold hover:bg-gray-100 hover:text-cyan-500 transition duration-300">
+                        Citas Pendientes
+                    </a>
+                    
+                    <a routerLink="/historial"
+                        class="block px-4 py-2 text-sm text-blue-900 hover:bg-gray-100 hover:text-cyan-500 transition duration-300">
+                        Historial de Citas
+                    </a>
+                </div>
+            </div>
+            <div class="relative group">
+                <a routerLink="/mascotas"
+                class="text-blue-900 hover:text-cyan-500 transition duration-300 font-medium flex items-center">Mascotas
+                    <svg class="ml-1 h-5 w-5 transition duration-300 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <div class="absolute left-1/2 -translate-x-1/2 mt-0 top-full hidden group-hover:block w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none py-1">
+                    <a routerLink="/mascotas"
+                        class="block px-4 py-2 text-sm text-blue-900 hover:bg-gray-100 hover:text-cyan-500 transition duration-300">
+                        Registrar mascotas
+                    </a>
+                    
+                    <a routerLink="/mascotas/list"
+                        class="block px-4 py-2 text-sm text-blue-900 hover:bg-gray-100 hover:text-cyan-500 transition duration-300">
+                        lista de registros
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="hidden md:flex items-center space-x-4">
+            <a routerLink="/login"
+                class="text-blue-900 hover:text-cyan-500 transition duration-300 font-semibold">
+                Iniciar Sesión
+            </a>
+            <a routerLink="/cita"
+                class="bg-cyan-500 text-white py-2 px-4 rounded-full hover:bg-blue-900 transition duration-300 font-semibold shadow-lg">
+                Agenda tu Cita
+            </a>
+        </div>
+        
+        <button class="md:hidden text-blue-900 text-2xl">☰</button>
+        
+    </div>
+</header>

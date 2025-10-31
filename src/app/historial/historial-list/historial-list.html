@@ -1,0 +1,242 @@
+<main class="bg-gray-50 py-16 sm:py-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 bg-white p-8 rounded-xl shadow-lg border-b-4 border-blue-900">
+            <div>
+                <span class="text-lg font-medium text-cyan-600 uppercase">Historial de Paciente</span>
+                <h1 class="text-5xl font-extrabold text-blue-900 mt-1 mb-2">
+                    Max 🐶
+                </h1>
+                <p class="text-xl text-gray-600">
+                    Labrador, Macho, 5 años (ID: #VET987)
+                </p>
+            </div>
+            
+            <a href="#" class="mt-4 sm:mt-0 px-6 py-3 bg-cyan-500 text-white font-bold rounded-full shadow-lg hover:bg-blue-900 transition duration-300 flex items-center whitespace-nowrap">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zm-7.536 7.536l2.828 2.828-4.95 4.95A1 1 0 013 18.172v-3.828l3.05-3.05z" />
+                </svg>
+                Editar Datos de la Mascota
+            </a>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-2 space-y-8">
+                <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xl">
+                    <h2 class="text-2xl font-bold text-blue-900 border-b pb-3 mb-4 flex items-center">
+                        <span class="mr-2 text-cyan-500">📝</span> Ficha General
+                    </h2>
+                    <dl class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
+                        <div class="border-b border-gray-100 pb-2">
+                            <dt class="font-medium text-gray-500">Nombre Completo</dt>
+                            <dd class="mt-1 text-gray-900 font-semibold">Max</dd>
+                        </div>
+                        <div class="border-b border-gray-100 pb-2">
+                            <dt class="font-medium text-gray-500">Especie / Raza</dt>
+                            <dd class="mt-1 text-gray-900 font-semibold">Perro / Labrador</dd>
+                        </div>
+                        <div class="border-b border-gray-100 pb-2">
+                            <dt class="font-medium text-gray-500">Fecha de Nacimiento</dt>
+                            <dd class="mt-1 text-gray-900 font-semibold">01/05/2020 (5 años)</dd>
+                        </div>
+                        <div class="border-b border-gray-100 pb-2">
+                            <dt class="font-medium text-gray-500">Sexo / Esterilización</dt>
+                            <dd class="mt-1 text-gray-900 font-semibold">Macho / Sí (Castrado)</dd>
+                        </div>
+                        <div class="sm:col-span-2 border-b border-gray-100 pb-2">
+                            <dt class="font-medium text-gray-500">Número de Microchip</dt>
+                            <dd class="mt-1 text-gray-900 font-semibold">987654321012345</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xl border-l-4 border-red-500">
+                    <h2 class="text-2xl font-bold text-red-700 border-b pb-3 mb-4 flex items-center">
+                        <span class="mr-2 text-red-500">🚨</span> Alergias y Condiciones
+                    </h2>
+                    <p class="text-gray-900 text-base">
+                        **Alergia:** Penicilina y ciertos antibióticos. <br>
+                        **Condiciones:** Displasia de cadera leve (requiere condroprotectores periódicos).
+                    </p>
+                    <span class="mt-3 inline-flex items-center rounded-md bg-red-100 px-3 py-1 text-xs font-medium text-red-700">¡Revisar antes de recetar!</span>
+                </div>
+            </div>
+            <div class="space-y-8">
+                
+                <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xl">
+                    <h2 class="text-2xl font-bold text-blue-900 border-b pb-3 mb-4 flex items-center">
+                        <span class="mr-2 text-cyan-500">👤</span> Datos del Dueño
+                    </h2>
+                    <dl class="text-sm space-y-3">
+                        <div>
+                            <dt class="font-medium text-gray-500">Nombre</dt>
+                            <dd class="mt-1 text-gray-900 font-semibold">Juan Pérez</dd>
+                        </div>
+                        <div>
+                            <dt class="font-medium text-gray-500">Teléfono</dt>
+                            <dd class="mt-1 text-gray-900 font-semibold">(+51) 987 654 321</dd>
+                        </div>
+                        <div>
+                            <dt class="font-medium text-gray-500">Email</dt>
+                            <dd class="mt-1 text-gray-900 font-semibold">juan.perez@email.com</dd>
+                        </div>
+                        <div class="pt-2">
+                            <dt class="font-medium text-gray-500">ID de Cliente</dt>
+                            <dd class="mt-1 text-blue-900 font-extrabold text-lg">12345</dd>
+                        </div>
+                    </dl>
+                </div>
+                
+                <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xl border-l-4 border-green-500">
+                    <h2 class="text-2xl font-bold text-green-700 border-b pb-3 mb-4 flex items-center">
+                        <span class="mr-2 text-green-500">💉</span> Próximas Vacunas
+                    </h2>
+                    <dl class="text-sm space-y-3">
+                        <div class="pb-1 border-b border-gray-100">
+                            <dt class="font-medium text-gray-500">Antirrábica</dt>
+                            <dd class="mt-1 text-gray-900 font-semibold">20 de Mayo, 2026</dd>
+                        </div>
+                        <div class="pb-1 border-b border-gray-100">
+                            <dt class="font-medium text-gray-500">DHPPI (Séxtuple)</dt>
+                            <dd class="mt-1 text-gray-900 font-semibold">20 de Mayo, 2026</dd>
+                        </div>
+                        <div class="pt-2 text-center">
+                             <a href="#" class="text-sm font-medium text-green-700 hover:text-cyan-500">Ver Calendario Completo →</a>
+                        </div>
+                    </dl>
+                </div>
+
+                <a href="#" class="block w-full text-center px-6 py-3 bg-blue-900 text-white font-bold rounded-xl shadow-lg hover:bg-cyan-500 transition duration-300">
+                    Agendar Nueva Cita para Max
+                </a>
+            </div>
+            </div>
+
+        ---
+
+        <div class="mt-16">
+            <h2 class="text-3xl font-extrabold text-blue-900 mb-6 border-b-2 border-cyan-500 pb-2">
+                📂 Historial de Consultas Médicas
+            </h2>
+
+            <div class="space-y-6">
+
+                <div class="bg-white p-6 rounded-xl shadow-xl border-l-4 border-cyan-500 hover:shadow-2xl transition duration-300">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 pb-2 border-b border-gray-100">
+                        <h3 class="text-xl font-bold text-blue-900">Chequeo Anual y Vacunación</h3>
+                        <div class="flex items-center space-x-3 mt-2 sm:mt-0">
+                            <span class="text-sm font-semibold text-gray-600 whitespace-nowrap">20 de Mayo, 2025 (Dr. Ríos)</span>
+                            <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Completa</span>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                        
+                        <div class="border-l-4 border-blue-900 pl-4">
+                            <h4 class="font-bold text-blue-900 mb-2 flex items-center uppercase text-xs tracking-wider">
+                                <span class="text-lg mr-1 text-blue-500">🔍</span> Detalle y Diagnóstico
+                            </h4>
+                            <p class="text-gray-700 leading-relaxed">
+                                Se realizaron **pruebas de sangre** y heces (resultados normales). Examen físico sin hallazgos relevantes. **Diagnóstico:** Buen estado general; Displasia de cadera leve (control). Peso registrado: 35.2 kg.
+                            </p>
+                        </div>
+                        
+                        <div class="border-l-4 border-cyan-500 pl-4">
+                            <h4 class="font-bold text-cyan-700 mb-2 flex items-center uppercase text-xs tracking-wider">
+                                <span class="text-lg mr-1 text-cyan-500">💊</span> Plan y Prescripción
+                            </h4>
+                            <p class="text-gray-800 leading-relaxed font-medium">
+                                Se aplicó la Vacuna **Antirrábica** y la **DHPPI**. La prescripción incluye continuar con **Condroprotectores (Artrin)** por 6 meses. Se recomienda mantener la dieta y ejercicio moderado.
+                            </p>
+                        </div>
+                    </div>
+
+                    <a href="#" class="mt-4 inline-flex items-center text-sm font-medium text-blue-900 hover:text-cyan-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" /></svg>
+                        Ver Documentos y Factura →
+                    </a>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-xl border-l-4 border-blue-900 hover:shadow-2xl transition duration-300">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 pb-2 border-b border-gray-100">
+                        <h3 class="text-xl font-bold text-blue-900">Dolor Leve en Pata Trasera</h3>
+                        <div class="flex items-center space-x-3 mt-2 sm:mt-0">
+                            <span class="text-sm font-semibold text-gray-600 whitespace-nowrap">15 de Noviembre, 2024 (Dra. Soto)</span>
+                            <span class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-600/20">Seguimiento</span>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                        
+                        <div class="border-l-4 border-blue-900 pl-4">
+                            <h4 class="font-bold text-blue-900 mb-2 flex items-center uppercase text-xs tracking-wider">
+                                <span class="text-lg mr-1 text-blue-500">🔍</span> Detalle y Diagnóstico
+                            </h4>
+                            <p class="text-gray-700 leading-relaxed">
+                                Max presenta **cojera intermitente** después de ejercicio intenso. Se realizó palpación y radiografía de cadera (normal). **Diagnóstico:** Sobreesfuerzo muscular en cuádriceps, posible origen en la displasia leve.
+                            </p>
+                        </div>
+                        
+                        <div class="border-l-4 border-cyan-500 pl-4">
+                            <h4 class="font-bold text-cyan-700 mb-2 flex items-center uppercase text-xs tracking-wider">
+                                <span class="text-lg mr-1 text-cyan-500">💊</span> Plan y Prescripción
+                            </h4>
+                            <p class="text-gray-800 leading-relaxed font-medium">
+                                Se prescribió **Reposo estricto** por 7 días. Se recetó **Meloxicam 5mg** (Antiinflamatorio, NO Penicilina) una dosis diaria por 5 días. Se iniciará fisioterapia leve al finalizar el reposo.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="mt-4 inline-flex items-center text-sm font-medium text-blue-900 hover:text-cyan-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" /></svg>
+                        Ver Documentos y Factura →
+                    </a>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-xl border-l-4 border-gray-400 hover:shadow-2xl transition duration-300">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 pb-2 border-b border-gray-100">
+                        <h3 class="text-xl font-bold text-blue-900">Primera Consulta y Registro</h3>
+                        <div class="flex items-center space-x-3 mt-2 sm:mt-0">
+                            <span class="text-sm font-semibold text-gray-600 whitespace-nowrap">01 de Diciembre, 2023 (Dr. Ríos)</span>
+                            <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-600/20">Inicial</span>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                        
+                        <div class="border-l-4 border-blue-900 pl-4">
+                            <h4 class="font-bold text-blue-900 mb-2 flex items-center uppercase text-xs tracking-wider">
+                                <span class="text-lg mr-1 text-blue-500">🔍</span> Detalle y Diagnóstico
+                            </h4>
+                            <p class="text-gray-700 leading-relaxed">
+                                Registro inicial. Examen físico completo (EFC) documentado. Peso: 33.5 kg. Se registran **alergias confirmadas** a Penicilina y sus derivados. **Diagnóstico:** Paciente sano, sin signos de enfermedad aguda.
+                            </p>
+                        </div>
+                        
+                        <div class="border-l-4 border-cyan-500 pl-4">
+                            <h4 class="font-bold text-cyan-700 mb-2 flex items-center uppercase text-xs tracking-wider">
+                                <span class="text-lg mr-1 text-cyan-500">💊</span> Plan y Prescripción
+                            </h4>
+                            <p class="text-gray-800 leading-relaxed font-medium">
+                                Se procedió con la colocación de **Microchip** (ID: 987...). Se entregó y explicó el calendario de vacunas y desparasitación para el próximo año.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="mt-4 inline-flex items-center text-sm font-medium text-blue-900 hover:text-cyan-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" /></svg>
+                        Ver Documentos y Factura →
+                    </a>
+                </div>
+                
+            </div>
+            
+            <div class="mt-8 text-center">
+                <a href="#" class="text-sm text-blue-900 hover:text-cyan-500 font-medium">
+                    Cargar más consultas anteriores...
+                </a>
+            </div>
+
+        </div>
+        </div>
+</main>

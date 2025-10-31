@@ -1,0 +1,160 @@
+<main class="bg-gray-50 py-16 sm:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-10 bg-white p-8 rounded-xl shadow-lg">
+            <h1 class="text-4xl sm:text-4xl font-extrabold text-blue-900 mt-2 mb-2">
+                Añadir Nueva Mascota 🐾
+            </h1>
+            <p class="text-lg text-gray-600">
+                Completa la ficha para registrar a tu nuevo compañero y los datos de su dueño en VET.
+            </p>
+        </div>
+        
+        <div class="bg-white p-8 sm:p-10 rounded-xl shadow-2xl">
+            <form class="space-y-8" [formGroup]="mascotaForm" (submit)="handleSubmit()">
+                
+                <div class="border-b border-gray-200 pb-6">
+                    <h2 class="text-2xl font-bold text-blue-900 mb-4 flex items-center">
+                        <span class="text-cyan-500 mr-3 text-3xl font-extrabold">1.</span>
+                        Datos del Dueño
+                    </h2>
+                    
+                    <p class="text-sm text-gray-500 mb-4">
+                        Información de contacto principal del propietario.
+                    </p>
+
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        
+                        <div class="sm:col-span-2">
+                            <label for="owner-id" class="block text-sm font-medium text-gray-700">ID del Dueño</label>
+                            
+                            <div class="mt-1 flex space-x-3">
+                                <input type="text" name="duenoId" id="owner-id" required
+                                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm p-3 placeholder-gray-300"
+                                    placeholder="88888888" formControlName="id" minlength="8" maxlength="8"(blur)="buscarPorId()">
+                                <!-- <button type="button" (click)="buscarPorId()"
+                                    class="shrink-0 inline-flex items-center justify-center rounded-md border border-transparent bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-150">
+
+                                    <span class="ml-2 hidden sm:inline">Buscar</span>
+                                </button> -->
+                            </div>
+                            </div>
+                        
+                        <div>
+                            <label for="owner-name" class="block text-sm font-medium text-gray-700">Nombre</label>
+                            <input type="text" name="dueno-nombre" id="owner-name" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm p-3 placeholder-gray-300"
+                                placeholder="nombre"
+                                formControlName="nombre">
+                        </div>
+                        
+                        <div>
+                            <label for="owner-lastname" class="block text-sm font-medium text-gray-700">Apellido *</label>
+                            <input type="text" name="dueno-apellido" id="owner-lastname" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm p-3 placeholder-gray-300"
+                                placeholder="apellido"
+                                formControlName="apellido">
+                        </div>
+
+                        <div>
+                            <label for="owner-phone" class="block text-sm font-medium text-gray-700">Teléfono *</label>
+                            <input type="tel" name="dueno-telefono" id="owner-phone" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm p-3 placeholder-gray-300"
+                                placeholder="987654321"
+                                pattern="9[0-9]{8}"
+                                maxlength="9"
+                                formControlName="telefono">
+                        </div>
+                        
+                        <div>
+                            <label for="owner-email" class="block text-sm font-medium text-gray-700">Email *</label>
+                            <input type="email" name="dueno-email" id="owner-email" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm p-3 placeholder-gray-300"
+                                placeholder="nombre@ejemplo.com"
+                                formControlName="email">
+                        </div>
+                        
+                        <div class="sm:col-span-2">
+                            <label for="owner-address" class="block text-sm font-medium text-gray-700">Dirección (Opcional)</label>
+                            <input type="text" name="dueno-direccion" id="owner-address"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm p-3 placeholder-gray-300"
+                                placeholder="Calle, número, departamento"
+                                formControlName="direccion">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="border-b border-gray-200 pb-6">
+                    <h2 class="text-2xl font-bold text-blue-900 mb-4 flex items-center">
+                        <span class="text-cyan-500 mr-3 text-3xl font-extrabold">2.</span>
+                        Identificación de la Mascota
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        
+                        <div>
+                            <label for="pet-name" class="block text-sm font-medium text-gray-700">Nombre de la Mascota</label>
+                            <input type="text" name="nombre" id="pet-name" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm p-3 placeholder-gray-300"
+                                placeholder="mestizo"
+                                formControlName="mascotaNombre"
+                                >
+                        </div>
+
+                        <div>
+                            <label for="species" class="block text-sm font-medium text-gray-700">Especie</label>
+                            <select id="species" name="especie" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm p-3 bg-white "
+                                formControlName="mascotaEspecie">
+                                <option value="" disabled selected>Seleccionar</option>
+                                @for (elemento of especie; track $index) {
+                                    <option value="elemento">{{elemento}}</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="breed" class="block text-sm font-medium text-gray-700">Raza (o "Mestizo")</label>
+                            <input type="text" name="raza" id="breed" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm p-3 placeholder-gray-300"
+                                placeholder="mestizo"
+                                formControlName="mascotaRaza">
+                        </div>
+
+                        <div>
+                            <label for="sex" class="block text-sm font-medium text-gray-700">Sexo</label>
+                            <select id="sex" name="sexo" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm p-3 bg-white"
+                                formControlName="mascotaSexo">
+                                <option value="" disabled selected>Seleccionar</option>
+                                @for (elemento of sexo; track $index) {
+                                    <option value="elemento">{{elemento}}</option>
+                                }
+                            </select>
+                        </div>
+                        
+                        <div class="sm:col-span-2">
+                            <label for="birth-date" class="block text-sm font-medium text-gray-700">Fecha de Nacimiento (Aprox.)</label>
+                            <input type="date" name="fechaNacimiento" id="birth-date"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm p-3"
+                                formControlName="mascotaFechaNacimiento" >
+                        </div>
+
+                    </div>
+                </div>
+                <div class="pt-4">
+                    <button type="submit"
+                        class="group relative flex w-full justify-center rounded-full border border-transparent bg-cyan-500 py-3 px-4 text-lg font-bold text-white hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 transition duration-300 shadow-xl transform hover:scale-[1.01]">
+                        Registrar Mascota y Dueño en VET
+                    </button>
+                    <div class="mt-4 text-center">
+                        <a href="#" class="text-sm text-blue-900 hover:text-cyan-500 font-medium">
+                            Cancelar y Volver a Mis Mascotas
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</main>

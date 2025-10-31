@@ -1,0 +1,171 @@
+<main class="bg-gray-50 py-16 sm:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 bg-white p-8 rounded-xl shadow-lg border-b-4 border-cyan-500">
+            <div>
+                <h1 class="text-4xl font-extrabold text-blue-900 mb-2">
+                    <i class="fas fa-calendar-alt text-cyan-500 mr-2"></i> Gestión de Citas
+                </h1>
+                <p class="text-lg text-gray-600">
+                    Administra las citas programadas y revisa el historial clínico.
+                </p>
+            </div>
+            
+            <a href="#" class="mt-4 sm:mt-0 px-6 py-3 bg-cyan-500 text-white font-bold rounded-full shadow-lg hover:bg-blue-900 transition duration-300 flex items-center whitespace-nowrap">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                </svg>
+                Registrar Nueva Cita
+            </a>
+        </div>
+        
+        <div class="mb-8 flex justify-between items-center">
+            
+            <div class="flex border-b border-gray-300">
+                <a href="#proximas" class="px-6 py-3 text-lg font-bold text-blue-900 border-b-4 border-cyan-500 transition duration-300">
+                    Citas Próximas (2)
+                </a>
+                <a href="#pasadas" class="px-6 py-3 text-lg font-medium text-gray-500 hover:text-blue-900 transition duration-300">
+                    Citas Pasadas (3)
+                </a>
+            </div>
+            
+            <a href="#" class="px-4 py-2 text-sm font-semibold text-white bg-blue-900 rounded-full hover:bg-cyan-500 transition duration-300 shadow-md flex items-center whitespace-nowrap">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" /><path fill-rule="evenodd" d="M4 5a2 2 0 012-2h8a2 2 0 012 2v1H4V5zm10 4a1 1 0 100 2h2a1 1 0 100-2h-2zm-6 4a1 1 0 100 2h2a1 1 0 100-2H8z" clip-rule="evenodd" />
+                </svg>
+                Ver Expedientes Clínicos
+            </a>
+        </div>
+
+        <h2 class="text-2xl font-bold text-blue-900 mb-4" id="proximas">Citas Próximas (Pendientes y Confirmadas)</h2>
+        <div class="space-y-6">
+            ---------------------
+            @for (cita of citas; track cita.id) {
+                <div class="bg-white p-6 rounded-xl shadow-xl border-l-8 border-green-500">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
+                    
+                    <div class="col-span-1 border-r border-gray-200 md:pr-4">
+                        <p class="text-xs font-semibold uppercase text-gray-500">{{cita.fecha|FechaDetalle:'diaSemana'}}</p>
+                        <p class="text-4xl font-extrabold text-blue-900 leading-none">{{cita.fecha|FechaDetalle:'dia'}} <span class="text-xl font-bold">{{cita.fecha|FechaDetalle:'mes'}}</span></p> 
+                        <p class="text-sm font-medium text-gray-500 mb-2">{{cita.fecha|FechaDetalle:'anio'}}</p>
+                        <p class="text-xl font-bold text-cyan-500">{{cita.hora}}HORA</p>
+                    </div>
+
+                    <div class="col-span-1 md:col-span-3">
+                        <p class="text-xs font-semibold uppercase text-gray-500">Detalles de la Cita</p>
+                        <h3 class="text-2xl font-bold text-blue-900 mb-1">{{cita.servicio}}</h3>
+                        <p class="text-lg text-gray-700">Mascota: <span class="text-black font-bold">{{cita.mascota.nombre}}</span> | <span>{{cita.mascota.especie}}</span></p>
+                        <p class="text-sm text-gray-500 mt-1 italic">
+                            Nota: {{cita.detalle}}
+                        </p>
+                        @if (cita.estado) {
+                            <span class="inline-block mt-2 px-3 py-1 text-sm font-semibold text-white  rounded-full" [ngClass]="{
+                                'bg-green-600':cita.estado==='Confirmada',
+                                'bg-red-600':cita.estado==='Cancelada',
+                                'bg-blue-600':cita.estado==='Completada',
+                                'bg-amber-600':cita.estado==='Pendiente',
+                                }">
+                            {{cita.estado}}
+                            </span>
+                        }
+                    </div>
+
+                    <div class="col-span-1 flex flex-col space-y-2 justify-center items-end">
+                        <button title="Confirmar" class="w-10 h-10 flex items-center justify-center rounded-full bg-green-500/50 text-white shadow-md hover:bg-green-600 transition duration-200 cursor-pointer" 
+                        [ngClass]="{
+                            'bg-green-600':cita.estado==='Confirmada'
+                        }"
+                        (click)="handleState(cita.id,estadoCita.Confirmada)">
+                            <app-confirmar-icon></app-confirmar-icon>
+                        </button>
+                        <button title="Completada" class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-500/50 text-white shadow-md hover:bg-blue-600 transition duration-200 cursor-pointer"
+                        [ngClass]="{
+                            'bg-blue-600':cita.estado==='Completada'
+                        }"
+                        (click)="handleState(cita.id,estadoCita.Completada)">
+                            <app-completado-icon></app-completado-icon>
+                        </button>
+                        <button title="Cancelar Cita" class="w-10 h-10 flex items-center justify-center rounded-full bg-red-500/50 text-white shadow-md hover:bg-red-600 transition duration-200 cursor-pointer"
+                        [ngClass]="{
+                            'bg-red-600':cita.estado==='Cancelada'
+                        }"
+                        (click)="handleState(cita.id,estadoCita.Cancelada)">
+                            <app-cancelar-icon></app-cancelar-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            }
+        </div>
+
+
+
+        <h2 class="text-2xl font-bold text-blue-900 mb-4" id="pasadas">Citas Pasadas (Completadas, Canceladas y Ausentes)</h2>
+        <div class="space-y-6">
+            
+            <div class="bg-white p-6 rounded-xl shadow-xl border-l-8 border-blue-500 opacity-90">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+                    
+                    <div class="col-span-1 border-r border-gray-200 md:pr-4">
+                        <p class="text-xs font-semibold uppercase text-gray-500">lunes</p>
+                        <p class="text-4xl font-extrabold text-gray-700 leading-none">10 <span class="text-xl font-bold">Jun</span></p> 
+                        <p class="text-sm font-medium text-gray-500 mb-2">2024</p>
+                        <p class="text-xl font-bold text-gray-500">14:00 PM</p>
+                    </div>
+
+                    <div class="col-span-1 md:col-span-2">
+                        <p class="text-xs font-semibold uppercase text-gray-500">Detalles de la Atención</p>
+                        <h3 class="text-2xl font-bold text-gray-700 mb-1">Control Post-Operación</h3>
+                        <p class="text-lg text-gray-500">Mascota: **Mishi** (Gato) | Veterinario: **Dr. Ríos**</p>
+                        <p class="text-sm text-gray-500 mt-1 italic">
+                            **Diagnóstico:** Recuperación exitosa. Suturas removidas.
+                        </p>
+                        <span class="inline-block mt-2 px-3 py-1 text-sm font-semibold text-white bg-blue-500 rounded-full">
+                            ✔️ Completada
+                        </span>
+                    </div>
+
+                    <div class="col-span-1 flex flex-col space-y-2 justify-center">
+                        <a href="#" class="px-4 py-2 text-sm font-medium text-white bg-blue-900 rounded-lg hover:bg-cyan-500 transition duration-300 text-center shadow-md">
+                            <i class="fas fa-file-alt mr-1"></i> Ver Resumen Clínico
+                        </a>
+                        <a href="#" class="px-4 py-2 text-sm font-medium text-blue-900 border border-blue-900 rounded-lg hover:bg-blue-100 transition duration-300 text-center">
+                            Agendar Control
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-xl border-l-8 border-red-500 opacity-90">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+                    
+                    <div class="col-span-1 border-r border-gray-200 md:pr-4">
+                        <p class="text-xs font-semibold uppercase text-gray-500">domingo</p>
+                        <p class="text-4xl font-extrabold text-gray-700 leading-none">01 <span class="text-xl font-bold">Dic</span></p>
+                        <p class="text-sm font-medium text-gray-500 mb-2">2024</p>
+                        <p class="text-xl font-bold text-gray-500">11:00 AM</p>
+                    </div>
+
+                    <div class="col-span-1 md:col-span-2">
+                        <p class="text-xs font-semibold uppercase text-gray-500">Detalles de la Cita</p>
+                        <h3 class="text-2xl font-bold text-red-700 mb-1 line-through">Examen de Sangre</h3>
+                        <p class="text-lg text-gray-500">Mascota: **Max** (Perro) | Motivo: **Cancelación del Dueño**</p>
+                        <span class="inline-block mt-2 px-3 py-1 text-sm font-semibold text-white bg-red-500 rounded-full">
+                            ❌ Cancelada
+                        </span>
+                    </div>
+
+                    <div class="col-span-1 flex flex-col space-y-2 justify-center">
+                        <a href="#" class="px-4 py-2 text-sm font-medium text-white bg-cyan-500 rounded-lg hover:bg-blue-900 transition duration-300 text-center shadow-md">
+                            <i class="fas fa-redo-alt mr-1"></i> Agendar de Nuevo
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</main>

@@ -1,0 +1,71 @@
+<div class="flex min-h-screen items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="w-full max-w-md space-y-8 p-10 bg-white rounded-xl shadow-2xl border border-gray-200">
+        
+        <div class="text-center">
+            <svg class="mx-auto h-12 w-auto text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17.5l-5.196-3.75a1 1 0 010-1.5l5.196-3.75a1 1 0 011.608 0l5.196 3.75a1 1 0 010 1.5L13.608 17.5a1 1 0 01-1.608 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6a3 3 0 100 6 3 3 0 000-6z"/>
+            </svg>
+            <h2 class="mt-6 text-center text-3xl font-extrabold tracking-tight text-blue-900">
+                Bienvenido de vuelta
+            </h2>
+            <p class="mt-2 text-center text-md text-gray-600">
+                Inicia sesión en tu cuenta VET
+            </p>
+        </div>
+
+        <form class="mt-8 space-y-6" [formGroup]="userLogin" (submit)="handleSubmit()">
+            <input type="hidden" name="remember" value="true">
+            <div class="space-y-4">
+                
+                <div>
+                    <label for="email-address" class="sr-only">Correo Electrónico</label>
+                    <input id="email-address" name="email" type="email"
+                        class="relative block w-full appearance-none rounded-md border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm"
+                        placeholder="Correo Electrónico" formControlName="email">
+                        @if (email?.invalid && email?.touched) {
+                            <p class="text-red-500">correo invalido</p>
+                        }
+                </div>
+                
+                <div>
+                    <label for="password" class="sr-only">Contraseña</label>
+                    <input id="password" name="password" type="password"
+                        class="relative block w-full appearance-none rounded-md border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm"
+                        placeholder="Contraseña" formControlName="password">
+                        @if (password?.invalid && password?.touched) {
+                            <p class="text-red-500">contraseña requerida</p>
+                        }
+                </div>
+            </div>
+            @if (messageError) {
+                <span class="text-red-600">{{messageError}}</span>
+            }
+
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <input id="remember-me" name="remember-me" type="checkbox"
+                        class="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500">
+                    <label for="remember-me" class="ml-2 block text-sm text-gray-900">
+                        Recordarme
+                    </label>
+                </div>
+
+                <div class="text-sm">
+                    <a routerLink="/olvide-contrasena"
+                        class="font-medium text-blue-900 hover:text-cyan-500 transition duration-300">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit"
+                    class="group relative flex w-full justify-center rounded-md border border-transparent bg-cyan-500 py-3 px-4 text-sm font-bold text-white hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 transition duration-300 shadow-lg cursor-pointer"
+                    >
+                    ACCEDER AL SISTEMA
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
